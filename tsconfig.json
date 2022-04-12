@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./source",
+        "paths": {
+            "@models/*": ["models/*"],
+            "@interfaces/*": ["interfaces/*"],
+            "@validators/*": ["validators/*"],
+            "@utils/*": ["utils/*"],
+            "@controllers/*": ["controllers/*"],
+            "@repositories/*": ["repositories/*"]
+        },
+        "typeRoots": ["./source/@types", "./node_modules/@types"],
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "./build",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    },
+    "include": ["./source/**/*.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts", "typings"]
+}
