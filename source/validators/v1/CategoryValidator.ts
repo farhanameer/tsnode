@@ -1,24 +1,28 @@
-import ICategory from "@interfaces/category";
-import Joi, { ObjectSchema } from "joi";
-
-
+import { UpdateCategoryDTO } from "@dto/v1/CategoryDTO";
+import { ICategory } from "@interfaces/v1/category";
+import Joi from "joi";
 
 class CategoryValidator {
   static create(data: ICategory) {
     const schema = Joi.object<ICategory>({
-      name : Joi.string().required().messages({
-          'any.required' : 'category name is required'
-      }) ,
-      categoryImage : Joi.string().required().messages({
-        "any.required" : 'category image is required'
-      }) ,
-      isActive : Joi.boolean().required().messages({
-          'any.required' : 'is active is a required field'
-      })
+      name: Joi.string().min(1).required(),
+      categoryImage: Joi.string().min(1).required(),
+      displayOrder: Joi.number().positive().min(1).optional(),
+      isActive: Joi.boolean().optional(),
     });
     return schema.validate(data);
   }
-  
+
+  static update(payload: UpdateCategoryDTO) {
+    const schema = Joi.object<UpdateCategoryDTO>({
+      categoryId: Joi.string().hex().length(24).required(),
+      name: Joi.string().min(1).optional(),
+      categoryImage: Joi.string().min(1).optional(),
+      displayOrder: Joi.number().positive().min(1).optional(),
+      isActive: Joi.boolean().optional(),
+    });
+    return schema.validate(payload);
+  }
 }
 
 export default CategoryValidator;

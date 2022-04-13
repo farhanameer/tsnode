@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import logging from "./config/logging";
 import config from "./config/config";
-import v1Routes from './routes/v1/v1Routes'
+import v1Routes from "./routes/v1/v1Routes";
 import mongoose from "mongoose";
 import AppError from "@utils/AppError";
 import AppErrorHandler from "middlewares/AppErrorHandler";
