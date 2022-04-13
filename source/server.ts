@@ -1,15 +1,19 @@
 import http from "http";
 import bodyParser from "body-parser";
-import express from "express";
+import express, { NextFunction } from "express";
 import logging from "./config/logging";
 import config from "./config/config";
-import v1Routes from './routes/v1/v1Routes'
+import v1Routes from "./routes/v1/v1Routes";
 import mongoose from "mongoose";
 import AppError from "@utils/AppError";
 import AppErrorHandler from "middlewares/AppErrorHandler";
+import TryMiddleWare from "middlewares/GlobalTryCatch";
+import tryCatch from "middlewares/GlobalTryCatch";
 
 const NAMESPACE = "Server";
+
 const router = express();
+
 logging.info(NAMESPACE, `METHOD: [] - URL: [] - IP: [${config.mongo.url}]`);
 /** Connect to Mongo */
 mongoose
@@ -63,9 +67,12 @@ router.use((req, res, next) => {
 
 
 
+
+
 /** Routes go here */
 
-router.use("/api/v1", v1Routes);
+
+router.use("/api/v1",  v1Routes);
 
 // /** Error handling */
 // router.use((req, res, next) => {

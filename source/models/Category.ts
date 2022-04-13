@@ -1,21 +1,31 @@
-
-import ICategory from "@interfaces/category";
+import { ICategory } from "@interfaces/v1/category";
 import mongoose, { Schema } from "mongoose";
 
-const CategorySchema: Schema = new Schema(
-  {
-
-
-    name :{ type: String}, 
-
-
-  categoryImage : {type : String},
-  isActive : { type: Boolean} ,
-   displayOrder : { type : Number},
+const CategorySchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    default: "",
   },
-  {
-    timestamps: true,
-  }
-);
+  categoryImage: {
+    type: String,
+    required: true,
+    default: "",
+  },
+  displayOrder: {
+    type: Number,
+    default: 1,
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
+  translations : [
+    {
+      lang : String, 
+      translation : String
+    }
+  ]
+});
 
 export default mongoose.model<ICategory>("Category", CategorySchema);

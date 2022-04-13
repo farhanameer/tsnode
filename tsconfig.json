@@ -7,7 +7,9 @@
             "@validators/*": ["validators/*"],
             "@utils/*": ["utils/*"],
             "@controllers/*": ["controllers/*"],
-            "@repositories/*": ["repositories/*"]
+            "@repositories/*": ["repositories/*"],
+            "@dto/*": ["DTOs/*"],
+            "@customtypes/*": ["types/*"]
         },
         "typeRoots": ["./source/@types", "./node_modules/@types"],
         "target": "es6",
