@@ -2,12 +2,10 @@ import { ISubCategory } from "@interfaces/v1/category";
 import mongoose, { Schema } from "mongoose";
 
 const SubCategorySchema = new Schema({
-  isActive: {
-    type: Boolean,
-    default: true,
-  },
-  displayOrder: {
-    type: Number,
+  parentCategoryId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+    required: true,
   },
   products: [
     {
@@ -15,11 +13,14 @@ const SubCategorySchema = new Schema({
       ref: "Product",
     },
   ],
-  parentCategoryId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-    required: true,
+  isActive: {
+    type: Boolean,
+    default: true,
   },
+  displayOrder: {
+    type: Number,
+  },
+
   translations: [
     {
       translation: String,

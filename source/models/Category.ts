@@ -4,7 +4,6 @@ import mongoose, { Schema } from "mongoose";
 const CategorySchema = new Schema({
   categoryImage: {
     type: String,
-    required: true,
     default: "",
   },
   displayOrder: {
