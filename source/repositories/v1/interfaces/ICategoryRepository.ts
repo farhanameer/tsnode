@@ -1,10 +1,14 @@
 import { ICategory } from "@interfaces/v1/category";
-import { ObjectId } from "mongoose";
-import { UpdateCategoryDTO } from "@dto/v1/CategoryDTO";
+import {
+  CreateCategoryDTO,
+  UpdateCategoryDTO,
+  DeleteCategoryDTO,
+} from "@dto/v1/web/CategoryDTO";
 
 export interface ICategoryRepository {
   findById(id: string): Promise<ICategory | null>;
-  create(payload: ICategory): Promise<ICategory>;
+  create(payload: CreateCategoryDTO): Promise<ICategory>;
   getAll(): Promise<ICategory[] | []>;
   update(payload: UpdateCategoryDTO): Promise<any>;
+  delete(payload: DeleteCategoryDTO): Promise<any>;
 }

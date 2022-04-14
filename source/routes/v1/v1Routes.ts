@@ -1,12 +1,8 @@
-
 import express from "express";
-import categoryRoutes from './category';
-
+import categoryRoutes from "./category";
 
 const router = express.Router();
 
-router.use('/categories' , categoryRoutes);
-
-
+router.use("/categories", categoryRoutes);
 
 export = router;

@@ -9,33 +9,22 @@ const categoryController = new CategoryController();
 const subCategoryController = new SubCategoryController();
 
 /* ----------- POST --------------*/
-// Add a new Category
-
-
-
 router.post("/", categoryController.create as any);
-
-// Add a New Sub Category
-router.post("/subcategory", subCategoryController.create);
+router.post("/subcategory", subCategoryController.create as any);
 
 /* ----------- GET --------------*/
-// Get All Categories
-router.get("/", categoryController.get);
-
-// Get All SubCategories of A Particular Category
+router.get("/", categoryController.get as any);
 router.get(
   "/:parentCategoryId/subcategories",
-  categoryController.getSubCategories
+  categoryController.getSubCategories as any
 );
 
 /* ----------- PUT --------------*/
-// Update a particular Category
-router.put("/", categoryController.update);
+router.put("/", categoryController.update as any);
+router.put("/subcategory", subCategoryController.update as any);
 
-// Update a particular subcategory
-// router.put(
-//   "/:parentCategoryId/subcategories",
-//   categoryController.getSubCategories
-// );
+/* ----------- DELETE ----------- */
+router.delete("/", categoryController.delete as any);
+router.delete("/subcategory", subCategoryController.delete as any);
 
 export = router;

@@ -64,15 +64,9 @@ router.use((req, res, next) => {
   next();
 });
 
-
-
-
-
-
 /** Routes go here */
 
-
-router.use("/api/v1",  v1Routes);
+router.use("/api/v1", v1Routes);
 
 // /** Error handling */
 // router.use((req, res, next) => {

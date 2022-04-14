@@ -2,11 +2,6 @@ import { ICategory } from "@interfaces/v1/category";
 import mongoose, { Schema } from "mongoose";
 
 const CategorySchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    default: "",
-  },
   categoryImage: {
     type: String,
     required: true,
@@ -20,12 +15,12 @@ const CategorySchema = new Schema({
     type: Boolean,
     default: true,
   },
-  translations : [
+  translations: [
     {
-      lang : String, 
-      translation : String
-    }
-  ]
+      lang: String,
+      translation: String,
+    },
+  ],
 });
 
 export default mongoose.model<ICategory>("Category", CategorySchema);
